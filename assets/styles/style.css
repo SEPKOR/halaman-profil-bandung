@@ -1,0 +1,211 @@
+/* --- Global --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f8f9;
+  color: #333;
+}
+
+/* --- Header & Jumbotron --- */
+header {
+  display: block;
+}
+
+.jumbotron {
+  padding: 40px 20px;
+  background-color: #00a2c6;
+  color: white;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.jumbotron h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.jumbotron p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Navbar cihuy --- */
+nav {
+  background-color: #00829e;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 15px;
+  display: block;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+/* --- My Istri ---*/
+.bg-char {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  z-index: -99;
+  opacity: 0.8;
+  max-width: 350px;
+  height: auto;
+}
+.bg-char-left {
+  left: 30px;
+}
+
+.bg-char-right {
+  right: 30px;
+}
+.bottom {
+  top: 200%;
+}
+/* --- Isinya --- */
+main {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+#content {
+  flex: 3;
+}
+
+aside {
+  flex: 1;
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  height: fit-content;
+}
+
+.iwisata {
+  list-style: none;
+}
+/* --- Card --- */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+h2,
+h3 {
+  color: #00a2c6;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* --- gambare --- */
+.featured-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.profile-img {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+figure {
+  text-align: center;
+  margin: 0;
+}
+
+figcaption {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* --- Table --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9em;
+}
+
+/* --- Footer --- */
+footer {
+  display: flex;
+  padding: 10px;
+  color: white;
+  background-color: #00a2c6;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  #content,
+  aside {
+    flex: 100%;
+  }
+
+  .jumbotron {
+    padding: 40px 15px;
+  }
+
+  nav ul {
+    justify-content: space-around;
+  }
+}
