@@ -11,7 +11,7 @@ body {
   line-height: 1.6;
 }
 
-/* --- NAVBAR --- */
+/* --- Navbar Cihuy --- */
 nav {
   background-color: #003366;
   padding: 5px 5%;
@@ -54,7 +54,7 @@ nav a:hover {
   color: #ffd700;
 }
 
-/* --- FORM CONTAINER --- */
+/* --- Container alias form --- */
 .container {
   max-width: 740px;
   margin: 40px auto;
@@ -79,7 +79,7 @@ legend {
   color: #1e293b;
 }
 
-/* --- INPUT STYLING --- */
+/* --- Style di inputny ey --- */
 .form-group {
   margin-bottom: 20px;
 }
@@ -154,7 +154,7 @@ select:focus {
   margin-bottom: 15px;
 }
 
-/* --- BUTTON --- */
+/* --- Tombole --- */
 .submit-container {
   margin-top: 30px;
 }
@@ -179,19 +179,6 @@ input[type="submit"]:hover {
 }
 
 input[type="submit"]:active {
-  transform: scale(0.98);
+  transform: scale(0.85);
 }
-
-@media (max-width: 480px) {
-  .name-row {
-    flex-direction: column;
-    gap: 0;
-  }
-  nav {
-    flex-direction: column;
-    text-align: center;
-  }
-  nav li {
-    margin: 10px 0;
-  }
-}
+/* --- Masih menunggu kapan ada react😔 --- */

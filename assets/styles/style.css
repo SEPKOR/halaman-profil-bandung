@@ -189,23 +189,3 @@ footer {
   justify-content: center;
   font-weight: bold;
 }
-
-@media screen and (max-width: 768px) {
-  main {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  #content,
-  aside {
-    flex: 100%;
-  }
-
-  .jumbotron {
-    padding: 40px 15px;
-  }
-
-  nav ul {
-    justify-content: space-around;
-  }
-}
