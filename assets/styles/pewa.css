@@ -1,0 +1,145 @@
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.7;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    background: linear-gradient(135deg, #003366, #004c99);
+    color: #fff;
+    padding: 24px 32px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   SECTION
+========================= */
+section {
+    margin-bottom: 32px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #003366;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #0066cc;
+    margin-top: 6px;
+    border-radius: 2px;
+}
+
+p {
+    text-align: justify;
+    font-size: 15px;
+}
+
+/* =========================
+   LIST
+========================= */
+ul, ol {
+    margin-left: 22px;
+    margin-top: 10px;
+}
+
+li {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* =========================
+   TABLE
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 15px;
+}
+
+table th,
+table td {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f0f4f8;
+    color: #003366;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background-color: #003366;
+    color: #ffffff;
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    margin-top: 40px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+
+    main {
+        margin: 20px;
+        padding: 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}

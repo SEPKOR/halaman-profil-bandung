@@ -18,7 +18,7 @@ header {
 
 .jumbotron {
   padding: 40px 20px;
-  background-color: #00a2c6;
+  background-color: #003366;
   color: white;
   text-align: center;
   align-items: center;
@@ -44,7 +44,7 @@ header {
 
 /* --- Navbar cihuy --- */
 nav {
-  background-color: #00829e;
+  background-color: #003366;
   padding: 5px;
   position: sticky;
   top: 0;
@@ -130,7 +130,7 @@ aside {
 
 h2,
 h3 {
-  color: #00a2c6;
+  color: #004c99;
   margin-top: 0;
 }
 
@@ -184,7 +184,7 @@ footer {
   display: flex;
   padding: 10px;
   color: white;
-  background-color: #00a2c6;
+  background-color: #003366;
   text-align: center;
   justify-content: center;
   font-weight: bold;
