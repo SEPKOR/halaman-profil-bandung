@@ -1,96 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpindahan Penduduk</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Identitas Warga</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/styles/pewa.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/styles/form.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">Bandung</a>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#sejarah">Sejarah</a></li>
+        <li><a href="index.html#geografis">Geografis</a></li>
+        <li><a href="index.html#wisata">Wisata</a></li>
+        <li><a href="perpindahan_penduduk.html">Perpindahan Warga</a></li>
+      </ul>
+    </nav>
 
-<header>
-    <h1>Layanan Perpindahan Penduduk</h1>
-    <p>Pemerintah Daerah – Informasi Administrasi Kependudukan</p>
-</header>
+    <div class="container">
+      <form action="">
+        <fieldset>
+          <legend>Pendaftaran Identitas Warga</legend>
 
-<main>
-    <section>
-        <h2>Deskripsi Layanan</h2>
-        <p>
-            Layanan Perpindahan Penduduk merupakan pelayanan administrasi kependudukan yang diselenggarakan oleh pemerintah daerah untuk mencatat dan menerbitkan dokumen kependudukan bagi penduduk yang melakukan perpindahan domisili, baik antar desa/kelurahan, kecamatan, kabupaten/kota, maupun provinsi.
-        </p>
-    </section>
+          <div class="form-group">
+            <label for="nik">Nomor Induk Kependudukan (NIK)</label>
+            <input
+              id="nik"
+              name="nik"
+              type="text"
+              placeholder="16 digit NIK sesuai KTP"
+              required
+            />
+          </div>
 
-    <section>
-        <h2>Dasar Hukum</h2>
-        <ul>
-            <li>Undang-Undang Nomor 24 Tahun 2013 tentang Administrasi Kependudukan</li>
-            <li>Peraturan Pemerintah yang mengatur pelaksanaan administrasi kependudukan</li>
-            <li>Peraturan Daerah setempat terkait pelayanan kependudukan</li>
-        </ul>
-    </section>
+          <div class="name-row">
+            <div class="form-group">
+              <label for="nama-depan">Nama Depan</label>
+              <input
+                id="nama-depan"
+                type="text"
+                placeholder="Nama Depan"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="nama-belakang">Nama Belakang</label>
+              <input
+                id="nama-belakang"
+                name="nama-belakang"
+                placeholder="Nama Belakang"
+                type="text"
+              />
+            </div>
+          </div>
 
-    <section>
-        <h2>Jenis Perpindahan Penduduk</h2>
-        <table>
-            <tr>
-                <th>Jenis</th>
-                <th>Keterangan</th>
-            </tr>
-            <tr>
-                <td>Antar Desa/Kelurahan</td>
-                <td>Perpindahan penduduk dalam satu kecamatan</td>
-            </tr>
-            <tr>
-                <td>Antar Kecamatan</td>
-                <td>Perpindahan penduduk dalam satu kabupaten/kota</td>
-            </tr>
-            <tr>
-                <td>Antar Kabupaten/Kota</td>
-                <td>Perpindahan penduduk lintas wilayah administrasi kabupaten/kota</td>
-            </tr>
-            <tr>
-                <td>Antar Provinsi</td>
-                <td>Perpindahan penduduk lintas wilayah provinsi</td>
-            </tr>
-        </table>
-    </section>
+          <div class="name-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="alamat@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="telepon">No. Telepon</label>
+              <input
+                id="telepon"
+                name="telepon"
+                type="tel"
+                placeholder="0812xxxx"
+              />
+            </div>
+          </div>
 
-    <section>
-        <h2>Persyaratan Umum</h2>
-        <ul>
-            <li>Kartu Keluarga (KK)</li>
-            <li>Kartu Tanda Penduduk (KTP)</li>
-            <li>Surat Pengantar dari RT/RW (jika diperlukan)</li>
-            <li>Surat Keterangan Pindah dari daerah asal</li>
-        </ul>
-    </section>
+          <div class="form-group">
+            <label for="alamat">Alamat Saat Ini</label>
+            <textarea
+              name="alamat"
+              id="alamat"
+              rows="3"
+              placeholder="Masukkan alamat lengkap..."
+            ></textarea>
+          </div>
 
-    <section>
-        <h2>Alur Pelayanan</h2>
-        <ol>
-            <li>Pemohon mengajukan permohonan perpindahan penduduk</li>
-            <li>Petugas melakukan verifikasi dan validasi data</li>
-            <li>Penerbitan Surat Keterangan Pindah</li>
-            <li>Pembaruan data kependudukan</li>
-        </ol>
-    </section>
+          <div class="name-row">
+            <div class="form-group">
+              <label for="tempat-lahir">Tempat Lahir</label>
+              <input
+                type="text"
+                id="tempat-lahir"
+                name="tempat-lahir"
+                placeholder="Kota lahir"
+              />
+            </div>
+            <div class="form-group">
+              <label for="tgl_lahir">Tanggal Lahir</label>
+              <input type="date" id="tgl_lahir" name="tgl_lahir" />
+            </div>
+          </div>
 
-    <section>
-        <h2>Waktu dan Biaya Pelayanan</h2>
-        <p>
-            Waktu penyelesaian pelayanan disesuaikan dengan ketentuan yang berlaku di pemerintah daerah setempat. Seluruh pelayanan administrasi kependudukan <strong>tidak dipungut biaya</strong>.
-        </p>
-    </section>
-</main>
+          <div class="name-row">
+            <div class="form-group">
+              <label for="agama">Agama</label>
+              <select id="agama" name="agama">
+                <option value="" disabled selected>Pilih Agama</option>
+                <option value="islam">Islam</option>
+                <option value="kristen">Kristen</option>
+                <option value="katolik">Katolik</option>
+                <option value="hindu">Hindu</option>
+                <option value="budha">Budha</option>
+                <option value="konghucu">Konghucu</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="status_pernikahan">Status Pernikahan</label>
+              <select id="status_pernikahan" name="status_pernikahan">
+                <option value="" disabled selected>Pilih Status</option>
+                <option value="menikah">Menikah</option>
+                <option value="belum_menikah">Belum Menikah</option>
+              </select>
+            </div>
+          </div>
 
-<footer>
-    <p>Belajar Dasar Pemrograman Web &#169; 2019, Dicoding Academy</p>
-</footer>
+          <p class="section-title">Jenis Kelamin</p>
+          <div class="form-group option-group">
+            <label class="option-item">
+              <input id="lk" type="radio" name="jenis_kelamin" /> Laki-Laki
+            </label>
+            <label class="option-item">
+              <input id="pr" type="radio" name="jenis_kelamin" /> Perempuan
+            </label>
+          </div>
 
-</body>
+          <p class="section-title">Bahasa Asing yang Dikuasai</p>
+          <div class="form-group option-group">
+            <label class="option-item">
+              <input id="inggris" type="checkbox" name="bahasa_asing" /> Inggris
+            </label>
+            <label class="option-item">
+              <input id="arab" type="checkbox" name="bahasa_asing" /> Arab
+            </label>
+            <label class="option-item">
+              <input id="jerman" type="checkbox" name="bahasa_asing" /> Jerman
+            </label>
+          </div>
+
+          <div class="submit-container">
+            <input type="submit" name="submit" value="Kirim Data Identitas" />
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>
 </html>
