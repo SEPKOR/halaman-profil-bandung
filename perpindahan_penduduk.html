@@ -27,38 +27,59 @@
         <fieldset>
           <legend>Pendaftaran Identitas Warga</legend>
 
-          <div class="form-group">
-            <label for="nik">Nomor Induk Kependudukan (NIK)</label>
-            <input
-              id="nik"
-              name="nik"
-              type="text"
-              placeholder="16 digit NIK sesuai KTP"
-              required
-            />
-          </div>
+          <div
+            class="main-form-wrapper"
+            style="display: flex; gap: 30px; align-items: flex-start"
+          >
+            <div style="flex: 2">
+              <div class="form-group">
+                <label for="nik">Nomor Induk Kependudukan (NIK)</label>
+                <input
+                  id="nik"
+                  name="nik"
+                  type="number"
+                  placeholder="16 digit NIK sesuai KTP"
+                  required
+                />
+              </div>
 
-          <div class="name-row">
-            <div class="form-group">
-              <label for="nama-depan">Nama Depan</label>
-              <input
-                id="nama-depan"
-                type="text"
-                placeholder="Nama Depan"
-                required
-              />
+              <div class="name-row">
+                <div class="form-group">
+                  <label for="nama-depan">Nama Depan</label>
+                  <input
+                    id="nama-depan"
+                    type="text"
+                    placeholder="Nama Depan"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="nama-belakang">Nama Belakang</label>
+                  <input
+                    id="nama-belakang"
+                    name="nama-belakang"
+                    placeholder="Nama Belakang"
+                    type="text"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="nama-belakang">Nama Belakang</label>
-              <input
-                id="nama-belakang"
-                name="nama-belakang"
-                placeholder="Nama Belakang"
-                type="text"
-              />
+
+            <div
+              class="photo-upload-container"
+              style="flex: 1; text-align: center"
+            >
+              <label>Foto Profil / KTP</label>
+              <div class="photo-box">
+                <input type="file" id="foto" name="foto" />
+                <div>Pilih Foto</div>
+                <img
+                  id="output-image"
+                  style="width: 100%; border-radius: 8px; display: none"
+                />
+              </div>
             </div>
           </div>
-
           <div class="name-row">
             <div class="form-group">
               <label for="email">Email</label>
@@ -151,6 +172,15 @@
             </label>
             <label class="option-item">
               <input id="jerman" type="checkbox" name="bahasa_asing" /> Jerman
+            </label>
+            <label class="option-item">
+              <input id="jepang" type="checkbox" name="bahasa_asing" /> Jepang
+            </label>
+            <label class="option-item">
+              <input id="hewan" type="checkbox" name="bahasa_asing" /> Hewan
+            </label>
+            <label class="option-item">
+              <input id="alien" type="checkbox" name="bahasa_asing" /> Alien
             </label>
           </div>
 
