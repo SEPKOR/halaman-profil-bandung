@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const formulir = document.getElementById("form-pendaftaran");
 
   // Fungsi untuk menutup popup
+  // Fungsi untuk menutup popup konfirmasi
   function tutupPopup() {
     overlayModal.classList.remove("active");
   }
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- 4. NOTIFIKASI SUKSES ---
+  // Fungsi untuk memunculkan kotak kecil pemberitahuan sukses
   function tampilkanPesanSukses() {
     const notif = document.createElement("div");
     notif.style.cssText = `
@@ -108,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     notif.textContent = "✔ Data Berhasil Terkirim!";
     document.body.appendChild(notif);
 
-    // Hilang sendiri setelah 3 detik
+    // Hilang sendiri setelah 3 detik agar tidak mengganggu
     setTimeout(() => notif.remove(), 3000);
   }
 });

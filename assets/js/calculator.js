@@ -160,6 +160,7 @@ function resetAll() {
 }
 
 // --- DUKUNGAN KEYBOARD ---
+// Menangani input angka dan operator melalui keyboard komputer
 document.addEventListener("keydown", (e) => {
   if (e.key >= "0" && e.key <= "9") inputAngka(e.key);
   else if (e.key === ".") inputTitik();

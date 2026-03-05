@@ -1,7 +1,7 @@
 /* ============================================================
    STYLE.CSS — Stylesheet Utama Tema Formal Pemerintah
    Berlaku untuk: index.html, my_istri.html
-   Warna dominan: Biru Navy & Biru Tua (Tema Pemerintah)
+   Warna dominan: Biru Navy & Biru Tua 
    ============================================================ */
 
 /* --- Import dari Google Fonts --- */
@@ -41,6 +41,7 @@
 /* ============================================================
    RESET DASAR
    ============================================================ */
+/* Aturan reset untuk menghilangkan margin/padding bawaan browser */
 *,
 *::before,
 *::after {
@@ -94,6 +95,7 @@ nav ul {
   justify-content: center;
 }
 
+/* Wrapper satu baris menu */
 nav li {
   margin: 0;
 }
@@ -196,6 +198,7 @@ header {
 /* ============================================================
    MAIN — Area konten utama
    ============================================================ */
+/* Layout dasar: artikel di kiri, sidebar di kanan */
 main {
   max-width: 1200px;
   margin: 40px auto;
@@ -204,6 +207,7 @@ main {
   gap: 30px;
 }
 
+/* Kolom utama konten */
 #content {
   flex: 3;
 }
@@ -425,7 +429,7 @@ footer p {
 }
 
 /* ============================================================
-   IMAGE GRID — Galeri foto (my_istri.html)
+   IMAGE GRID — Galeri foto
    ============================================================ */
 .image-grid {
   display: grid;
@@ -520,6 +524,7 @@ footer p {
     flex-direction: column;
   }
 
+  /* Sidebar kembali ke posisi normal di layar kecil */
   aside {
     position: static;
   }

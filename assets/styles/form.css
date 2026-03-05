@@ -28,6 +28,7 @@
 }
 
 /* --- Reset seluruh halaman & dasar body --- */
+/* Aturan reset untuk margin dan padding */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -180,17 +181,20 @@ legend::after {
 /* ============================================================
    FORM GROUP — Kelompok satu field (label + input)
    ============================================================ */
+/* Memberi jarak antar bagian input */
 .form-group {
   margin-bottom: 22px;
 }
 
 /* Baris dua kolom (nama / email, dll) */
+/* Baris untuk menempatkan dua input berdampingan */
 .name-row {
   display: flex;
   gap: 20px;
 }
 
 /* Setiap form-group dalam name-row mengambil lebar sama */
+/* Membagi lebar rata untuk input dalam satu baris */
 .name-row .form-group {
   flex: 1;
 }
@@ -249,6 +253,7 @@ select:focus {
 }
 
 /* Textarea khusus */
+/* Pengaturan khusus untuk kotak pesan panjang */
 textarea {
   resize: vertical;
   min-height: 80px;
@@ -405,6 +410,7 @@ textarea {
 }
 
 /* Tombol submit tetap dominan */
+/* Mengatur perbandingan lebar tombol submit */
 input[type="submit"] {
   flex: 2;
 }
@@ -542,6 +548,7 @@ button[type="submit"]:active {
 }
 
 /* Grup tombol popup (OK & Batal) */
+/* Penempatan tombol di dalam popup */
 .modal-actions {
   display: flex;
   gap: 12px;
@@ -603,6 +610,7 @@ button[type="submit"]:active {
     gap: 0;
   }
 
+  /* Tampilan legenda di layar kecil */
   legend {
     font-size: 1.2rem;
   }
@@ -622,6 +630,7 @@ footer {
   margin-top: 50px;
 }
 
+/* Mematikan paksa warna link di footer */
 footer p {
   color: #ffffff !important;
   margin: 0;

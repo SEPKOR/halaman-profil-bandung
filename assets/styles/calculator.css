@@ -20,6 +20,7 @@
 }
 
 /* --- Reset dasar --- */
+/* Menghapus margin dan padding default */
 *,
 *::before,
 *::after {
@@ -185,6 +186,7 @@ main {
 /* ============================================================
    GRID TOMBOL — Tata letak keyboard kalkulator
    ============================================================ */
+/* Pengaturan grid untuk keyboard kalkulator */
 .calc-buttons {
   display: grid;
   /* 4 kolom sama lebar */
