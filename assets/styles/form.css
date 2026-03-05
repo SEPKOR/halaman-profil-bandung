@@ -380,6 +380,33 @@ textarea {
   margin-top: 35px;
   border-top: 1px solid var(--gov-border);
   padding-top: 28px;
+  display: flex;
+  gap: 15px;
+}
+
+/* Tombol reset dengan gaya lebih kalem */
+#btn-reset {
+  flex: 1;
+  background-color: var(--gov-white);
+  color: var(--gov-text);
+  border: 1.5px solid var(--gov-border);
+  padding: 13px 20px;
+  border-radius: 4px;
+  font-family: var(--font-formal);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+#btn-reset:hover {
+  background-color: #ecf0f6;
+  border-color: var(--gov-blue-light);
+}
+
+/* Tombol submit tetap dominan */
+input[type="submit"] {
+  flex: 2;
 }
 
 /* Tombol submit dengan warna biru navy formal */

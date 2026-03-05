@@ -1,59 +1,80 @@
-// Handles hamburger menu, back-to-top button, and page transition functionality
+/**
+ * script.js
+ * Mengatur menu hamburger, tombol kembali ke atas, dan efek perpindahan halaman.
+ */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Add fade-in class to body on load
-    document.body.classList.add('fade-in');
+document.addEventListener("DOMContentLoaded", () => {
+  // --- 1. EFEK MUNCUL (FADE-IN) ---
+  // Memberikan kelas 'fade-in' ke body saat halaman selesai dimuat agar muncul perlahan
+  document.body.classList.add("fade-in");
 
-    // Hamburger menu functionality
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNav = document.getElementById('mainNav');
+  // --- 2. MENU HAMBURGER (Tampilan Mobile) ---
+  const tombolMenu = document.querySelector(".nav-toggle"); // Tombol garis tiga
+  const menuNavigasi = document.getElementById("mainNav"); // Daftar menu
 
-    if (navToggle && mainNav) {
-        navToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('nav-open');
-            navToggle.classList.toggle('open');
-        });
-    }
-
-    // Back to top button functionality
-    const backToTopBtn = document.getElementById('backToTopBtn');
-
-    if (backToTopBtn) {
-        // Show/hide button on scroll
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-        };
-
-        // Scroll to top on click
-        backToTopBtn.addEventListener('click', () => {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        });
-    }
-
-    // Page transition functionality
-    document.querySelectorAll('a').forEach(anchor => {
-        // Exclude external links, mailto, tel, and anchor links within the same page
-        const href = anchor.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          return; // Skip anchor links
-        }
-        if (anchor.hostname === window.location.hostname || !anchor.hostname) { // Same origin or relative path
-            anchor.addEventListener('click', function(e) {
-                const targetPage = this.href;
-                if (targetPage !== window.location.href) { // Only animate if navigating to a different page
-                    e.preventDefault();
-                    document.body.classList.remove('fade-in'); // Remove fade-in if it's there
-                    document.body.classList.add('fade-out');
-                    setTimeout(() => {
-                        window.location.href = targetPage;
-                    }, 500); // Match this timeout to the CSS animation duration
-                }
-            });
-        }
+  if (tombolMenu && menuNavigasi) {
+    tombolMenu.addEventListener("click", () => {
+      // Jika diklik, buka/tutup menu
+      menuNavigasi.classList.toggle("nav-open");
+      tombolMenu.classList.toggle("open");
     });
+  }
+
+  // --- 3. TOMBOL KEMBALI KE ATAS (BACK TO TOP) ---
+  const tombolKeAtas = document.getElementById("backToTopBtn");
+
+  if (tombolKeAtas) {
+    // Munculkan tombol jika layar sudah di-scroll ke bawah lebih dari 20 pixel
+    window.onscroll = function () {
+      if (
+        document.documentElement.scrollTop > 20 ||
+        document.body.scrollTop > 20
+      ) {
+        tombolKeAtas.style.display = "block";
+      } else {
+        tombolKeAtas.style.display = "none";
+      }
+    };
+
+    // Jika tombol diklik, geser layar ke paling atas
+    tombolKeAtas.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Efek geser halus
+      });
+    });
+  }
+
+  // --- 4. EFEK PERPINDAHAN HALAMAN (TRANSITION) ---
+  // Memberikan animasi saat pindah halaman agar terlihat profesional
+  const semuaLink = document.querySelectorAll("a");
+
+  semuaLink.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const alamatTujuan = this.getAttribute("href");
+
+      // Abaikan jika itu link internal atau link kosong
+      if (
+        !alamatTujuan ||
+        alamatTujuan.startsWith("#") ||
+        alamatTujuan.startsWith("mailto:")
+      ) {
+        return;
+      }
+
+      // Pastikan link menuju halaman di dalam website ini saja
+      if (this.hostname === window.location.hostname || !this.hostname) {
+        e.preventDefault(); // Stop pindah halaman seketika
+
+        // Mulai animasi menghilang (fade-out)
+        document.body.classList.remove("fade-in");
+        document.body.classList.add("fade-out");
+
+        // Tunggu 0.5 detik (durasi animasi) baru pindah halaman
+        setTimeout(() => {
+          window.location.href = alamatTujuan;
+        }, 500);
+      }
+    });
+  });
 });

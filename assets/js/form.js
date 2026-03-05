@@ -1,231 +1,114 @@
-// ============================================================
-// form.js — Logika Formulir Pendaftaran Identitas Warga
-// • Pratinjau foto
-// • Validasi field wajib (NIK, email, telepon)
-// • Popup konfirmasi data sebelum submit
-// ============================================================
+/**
+ * form.js
+ * Logika untuk Formulir Pendaftaran Warga - Pemerintah Kota Bandung
+ * Fungsi: Pratinjau foto, validasi input, dan munculkan popup konfirmasi.
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ────────────────────────────────────────────────────────
-  // PRATINJAU FOTO
-  // Menampilkan gambar yang dipilih user di dalam .photo-box
-  // ────────────────────────────────────────────────────────
-  const photoInput = document.getElementById("foto");
-  const outputImage = document.getElementById("output-image");
-  const fotoPlaceholder = document.getElementById("foto-placeholder");
+  // --- 1. PRATINJAU FOTO (PHOTO PREVIEW) ---
+  const inputFoto = document.getElementById("foto");
+  const gambarPratinjau = document.getElementById("output-image");
+  const teksPetunjuk = document.getElementById("foto-placeholder");
 
-  if (photoInput && outputImage) {
-    photoInput.addEventListener("change", (event) => {
-      const [file] = event.target.files;
+  if (inputFoto && gambarPratinjau) {
+    inputFoto.addEventListener("change", (e) => {
+      const file = e.target.files[0];
       if (file) {
-        // Tampilkan pratinjau gambar yang dipilih
-        outputImage.src = URL.createObjectURL(file);
-        outputImage.style.display = "block";
-        if (fotoPlaceholder) fotoPlaceholder.style.display = "none";
+        // Buat alamat sementara untuk gambar dan tampilkan
+        gambarPratinjau.src = URL.createObjectURL(file);
+        gambarPratinjau.style.display = "block";
+        if (teksPetunjuk) teksPetunjuk.style.display = "none";
       } else {
-        // Sembunyikan gambar jika tidak ada file dipilih
-        outputImage.src = "";
-        outputImage.style.display = "none";
-        if (fotoPlaceholder) fotoPlaceholder.style.display = "block";
+        // Sembunyikan jika tidak ada file
+        gambarPratinjau.style.display = "none";
+        if (teksPetunjuk) teksPetunjuk.style.display = "block";
       }
     });
   }
 
-  // ────────────────────────────────────────────────────────
-  // POPUP KONFIRMASI — Elemen-elemen modal
-  // ────────────────────────────────────────────────────────
-  const modalOverlay = document.getElementById("modal-konfirmasi");
-  const modalRingkasan = document.getElementById("modal-ringkasan");
-  const btnBatal = document.getElementById("btn-batal");
-  const btnKonfirmasi = document.getElementById("btn-konfirmasi");
-  const form = document.getElementById("form-pendaftaran");
+  // --- 2. MODAL KONFIRMASI (POPUP) ---
+  const overlayModal = document.getElementById("modal-konfirmasi");
+  const ringkasanData = document.getElementById("modal-ringkasan");
+  const tombolBatal = document.getElementById("btn-batal");
+  const tombolKonfirmasi = document.getElementById("btn-konfirmasi");
+  const formulir = document.getElementById("form-pendaftaran");
 
-  // Fungsi: Menutup modal tanpa submit (user bisa koreksi data)
-  function tutupModal() {
-    modalOverlay.classList.remove("active");
+  // Fungsi untuk menutup popup
+  function tutupPopup() {
+    overlayModal.classList.remove("active");
   }
 
-  // Tombol "Batal / Koreksi" → tutup popup
-  if (btnBatal) {
-    btnBatal.addEventListener("click", tutupModal);
+  if (tombolBatal) {
+    tombolBatal.addEventListener("click", tutupPopup);
   }
 
-  // Klik area gelap di luar kotak popup → tutup popup
-  if (modalOverlay) {
-    modalOverlay.addEventListener("click", (e) => {
-      if (e.target === modalOverlay) tutupModal();
+  if (tombolKonfirmasi) {
+    tombolKonfirmasi.addEventListener("click", () => {
+      tutupPopup();
+      tampilkanPesanSukses();
+      formulir.reset(); // Kosongkan form setelah sukses
+      if (gambarPratinjau) gambarPratinjau.style.display = "none";
+      if (teksPetunjuk) teksPetunjuk.style.display = "block";
     });
   }
 
-  // Tombol "Ya, Kirim Data" → proses form (tampilkan pesan sukses)
-  if (btnKonfirmasi) {
-    btnKonfirmasi.addEventListener("click", () => {
-      tutupModal();
-      // Di sini Anda bisa ganti dengan form.submit() atau fetch API
-      tampilkanSukses();
+  // --- 3. VALIDASI & KIRIM FORM ---
+  if (formulir) {
+    // Reset juga pratinjau foto jika tombol reset diklik
+    formulir.addEventListener("reset", () => {
+      if (gambarPratinjau) gambarPratinjau.style.display = "none";
+      if (teksPetunjuk) teksPetunjuk.style.display = "block";
+      // Bersihkan semua alert jika ada
     });
-  }
 
-  // ────────────────────────────────────────────────────────
-  // VALIDASI FORM & TAMPILKAN POPUP KONFIRMASI
-  // ────────────────────────────────────────────────────────
-  if (form) {
-    form.addEventListener("submit", function (event) {
-      event.preventDefault(); // Selalu cegah submit langsung
+    formulir.addEventListener("submit", (e) => {
+      e.preventDefault(); // Jangan kirim dulu, kita cek datanya
 
-      // Bersihkan semua error sebelumnya
-      document.querySelectorAll(".error-message").forEach((el) => el.remove());
-      document
-        .querySelectorAll(".invalid-field")
-        .forEach((el) => el.classList.remove("invalid-field"));
+      // Ambil data penting
+      const nik = document.getElementById("nik").value;
+      const namaDepan = document.getElementById("nama-depan").value;
+      const email = document.getElementById("email").value;
 
-      let isValid = true;
-
-      // Validasi semua field yang wajib (required)
-      form.querySelectorAll("[required]").forEach((input) => {
-        if (!input.value.trim()) {
-          isValid = false;
-          tampilkanError(input, "Field ini wajib diisi.");
-          input.classList.add("invalid-field");
-        }
-      });
-
-      // Validasi NIK: harus tepat 16 digit
-      const nikInput = document.getElementById("nik");
-      if (nikInput && nikInput.value.length !== 16) {
-        isValid = false;
-        tampilkanError(nikInput, "NIK harus tepat 16 digit.");
-        nikInput.classList.add("invalid-field");
-      }
-
-      // Validasi format email (jika diisi)
-      const emailInput = document.getElementById("email");
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (
-        emailInput &&
-        emailInput.value.trim() &&
-        !emailPattern.test(emailInput.value.trim())
-      ) {
-        isValid = false;
-        tampilkanError(emailInput, "Format email tidak valid.");
-        emailInput.classList.add("invalid-field");
-      }
-
-      // Validasi nomor telepon: hanya angka (jika diisi)
-      const teleponInput = document.getElementById("telepon");
-      const phonePattern = /^[0-9]+$/;
-      if (
-        teleponInput &&
-        teleponInput.value.trim() &&
-        !phonePattern.test(teleponInput.value.trim())
-      ) {
-        isValid = false;
-        tampilkanError(teleponInput, "Nomor telepon hanya boleh berisi angka.");
-        teleponInput.classList.add("invalid-field");
-      }
-
-      // Jika ada error → hentikan, tidak tampilkan popup
-      if (!isValid) {
-        const firstError = document.querySelector(".invalid-field");
-        if (firstError)
-          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      // Validasi Sederhana: NIK harus 16 angka
+      if (nik.length !== 16) {
+        alert("Maaf, NIK harus terdiri dari 16 angka!");
         return;
       }
 
-      // Jika semua valid → kumpulkan data dan tampilkan popup
-      bukaPopupKonfirmasi();
+      // Jika valid, kumpulkan data untuk ditampilkan di popup
+      const statusNikah =
+        document.getElementById("status_pernikahan").value || "-";
+      const jkTerpilih =
+        document.querySelector('input[name="jenis_kelamin"]:checked')?.value ||
+        "-";
+
+      // Masukkan data ke dalam kotak popup
+      ringkasanData.innerHTML = `
+                <p><strong>NIK:</strong> ${nik}</p>
+                <p><strong>Nama:</strong> ${namaDepan}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Status:</strong> ${statusNikah}</p>
+                <p><strong>Jenis Kelamin:</strong> ${jkTerpilih}</p>
+            `;
+
+      // Munculkan popup
+      overlayModal.classList.add("active");
     });
   }
 
-  // ────────────────────────────────────────────────────────
-  // FUNGSI: Kumpulkan data dari form dan tampilkan di popup
-  // ────────────────────────────────────────────────────────
-  function bukaPopupKonfirmasi() {
-    // Ambil nilai setiap field
-    const nik = document.getElementById("nik")?.value.trim() || "-";
-    const namaDepan =
-      document.getElementById("nama-depan")?.value.trim() || "-";
-    const namaBelakang =
-      document.getElementById("nama-belakang")?.value.trim() || "";
-    const namaLengkap = (namaDepan + " " + namaBelakang).trim();
-    const email = document.getElementById("email")?.value.trim() || "-";
-    const telepon = document.getElementById("telepon")?.value.trim() || "-";
-    const alamat = document.getElementById("alamat")?.value.trim() || "-";
-    const tempatLahir =
-      document.getElementById("tempat-lahir")?.value.trim() || "-";
-    const tglLahir = document.getElementById("tgl_lahir")?.value || "-";
-    const agama = document.getElementById("agama")?.value || "-";
-    const statusNikah =
-      document.getElementById("status_pernikahan")?.value || "-";
-
-    // Jenis kelamin dari radio button yang dipilih
-    const jkRadio = document.querySelector(
-      'input[name="jenis_kelamin"]:checked',
-    );
-    const jenisKelamin = jkRadio ? jkRadio.value : "-";
-
-    // Bahasa asing dari checkbox yang dipilih (bisa lebih dari satu)
-    const bahasaChecked = Array.from(
-      document.querySelectorAll('input[name="bahasa_asing"]:checked'),
-    ).map((cb) => cb.value);
-    const bahasaAsing =
-      bahasaChecked.length > 0 ? bahasaChecked.join(", ") : "Tidak ada";
-
-    // Bangun HTML ringkasan data untuk ditampilkan di modal
-    modalRingkasan.innerHTML = `
-            <div><strong>NIK</strong>: ${nik}</div>
-            <div><strong>Nama Lengkap</strong>: ${namaLengkap}</div>
-            <div><strong>Email</strong>: ${email}</div>
-            <div><strong>Telepon</strong>: ${telepon}</div>
-            <div><strong>Alamat</strong>: ${alamat}</div>
-            <div><strong>Tempat/Tgl Lahir</strong>: ${tempatLahir}, ${tglLahir}</div>
-            <div><strong>Agama</strong>: ${agama}</div>
-            <div><strong>Status Pernikahan</strong>: ${statusNikah}</div>
-            <div><strong>Jenis Kelamin</strong>: ${jenisKelamin}</div>
-            <div><strong>Bahasa Asing</strong>: ${bahasaAsing}</div>
-        `;
-
-    // Tampilkan overlay modal
-    modalOverlay.classList.add("active");
-  }
-
-  // ────────────────────────────────────────────────────────
-  // FUNGSI: Tampilkan pesan error di bawah field input
-  // ────────────────────────────────────────────────────────
-  function tampilkanError(inputElement, pesan) {
-    const errorEl = document.createElement("div");
-    errorEl.classList.add("error-message");
-    errorEl.textContent = pesan;
-    inputElement.parentNode.insertBefore(errorEl, inputElement.nextSibling);
-  }
-
-  // ────────────────────────────────────────────────────────
-  // FUNGSI: Notifikasi sukses setelah data dikonfirmasi
-  // (Ganti bagian ini dengan AJAX / fetch() ke server nyata)
-  // ────────────────────────────────────────────────────────
-  function tampilkanSukses() {
-    // Reset form setelah berhasil dikirim
-    form.reset();
-    if (outputImage) {
-      outputImage.src = "";
-      outputImage.style.display = "none";
-    }
-    if (fotoPlaceholder) fotoPlaceholder.style.display = "block";
-
-    // Tampilkan notifikasi sukses sederhana
+  // --- 4. NOTIFIKASI SUKSES ---
+  function tampilkanPesanSukses() {
     const notif = document.createElement("div");
     notif.style.cssText = `
-            position:fixed; top:24px; right:24px; z-index:99999;
-            background:#0d2b52; color:#fff; padding:16px 26px;
-            border-radius:4px; font-family:'Source Sans 3',sans-serif;
-            font-size:0.95rem; font-weight:600; box-shadow:0 4px 18px rgba(13,43,82,0.35);
-            border-left:4px solid #3b82c4;
-            animation: slideIn 0.3s ease;
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: #0d2b52; color: white; padding: 15px 25px;
+            border-radius: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-family: sans-serif; font-weight: bold;
         `;
-    notif.textContent = "✔ Data berhasil dikirim. Terima kasih!";
+    notif.textContent = "✔ Data Berhasil Terkirim!";
     document.body.appendChild(notif);
 
-    // Hapus notifikasi setelah 4 detik
-    setTimeout(() => notif.remove(), 4000);
+    // Hilang sendiri setelah 3 detik
+    setTimeout(() => notif.remove(), 3000);
   }
-}); // END DOMContentLoaded
+});
