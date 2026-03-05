@@ -1,0 +1,120 @@
+<!doctype html>
+<!-- ============================================================
+     my_istri.html
+     Halaman Galeri — "My Istri"
+     Menampilkan kumpulan foto dengan desain konsisten
+     tema biru formal pemerintah
+     ============================================================ -->
+<html lang="id">
+  <!-- ─── HEAD: meta, judul, font, stylesheet ─────────────── -->
+  <head>
+    <!-- Karakter UTF-8 -->
+    <meta charset="utf-8" />
+
+    <!-- Responsif di semua perangkat -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Judul halaman di tab browser -->
+    <title>My Istri — Pemerintah Kota Bandung</title>
+
+    <!-- Font formal dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheet utama tema biru formal -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/transitions.css" />
+  </head>
+
+  <!-- ─── BODY: konten halaman ─────────────────────────────── -->
+  <body>
+    <!-- NAV: diletakkan di luar header agar sticky bekerja sepanjang halaman -->
+    <nav>
+      <button class="nav-toggle" aria-label="Buka/tutup menu">
+        <span class="hamburger"></span>
+      </button>
+      <a href="index.html" class="logo">Kota Bandung</a>
+      <ul id="mainNav">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#sejarah">Sejarah</a></li>
+        <li><a href="index.html#geografis">Geografis</a></li>
+        <li><a href="index.html#wisata">Wisata</a></li>
+        <li><a href="perpindahan_penduduk.html">Perpindahan Warga</a></li>
+        <li><a href="kalkulator.html">Kalkulator</a></li>
+      </ul>
+    </nav>
+
+    <!-- HEADER: hanya berisi jumbotron -->
+    <header>
+      <div class="jumbotron">
+        <h1>My Istri</h1>
+        <p>Kumpulan gambar-gambar indah dari kekasihku.</p>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MAIN — Konten utama: galeri foto
+         ═══════════════════════════════════════════════════════ -->
+    <main
+      style="
+        display: block;
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 24px;
+      "
+    >
+      <!-- Konten galeri terpusat -->
+      <div id="content">
+        <!-- CARD: Galeri Foto -->
+        <article class="card">
+          <!-- Judul galeri foto -->
+          <h2>Gambar-gambar Zeta</h2>
+
+          <!-- Grid foto — menampilkan semua gambar dalam layout kisi -->
+          <div class="image-grid">
+            <!-- Gambar 1 -->
+            <div class="image-container">
+              <img src="assets/image/zetaV1.webp" alt="Foto Zeta 1" />
+            </div>
+
+            <!-- Gambar 2 -->
+            <div class="image-container">
+              <img src="assets/image/zetaV2.webp" alt="Foto Zeta 2" />
+            </div>
+
+            <!-- Gambar 3 -->
+            <div class="image-container">
+              <img src="assets/image/zetaV3.webp" alt="Foto Zeta 3" />
+            </div>
+
+            <!-- Gambar 4 -->
+            <div class="image-container">
+              <img src="assets/image/zetaV4.webp" alt="Foto Zeta 4" />
+            </div>
+          </div>
+          <!-- /Grid foto -->
+        </article>
+      </div>
+    </main>
+    <!-- ═══════════════════════════════════════════════════════ /MAIN -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER — Keterangan instansi di bagian bawah
+         ═══════════════════════════════════════════════════════ -->
+    <footer>
+      <p>
+        &copy; 2025 Pemerintah Kota Bandung &mdash; Layanan Informasi Digital
+      </p>
+    </footer>
+
+    <!-- Tombol kembali ke atas -->
+    <button id="backToTopBtn" title="Kembali ke atas">▲</button>
+
+    <!-- Script navigasi & scroll to top -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

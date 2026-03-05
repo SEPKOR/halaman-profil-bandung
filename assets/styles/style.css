@@ -1,113 +1,214 @@
-/* --- Global --- */
-* {
-  box-sizing: border-box;
+/* ============================================================
+   STYLE.CSS — Stylesheet Utama Tema Formal Pemerintah
+   Berlaku untuk: index.html, my_istri.html
+   Warna dominan: Biru Navy & Biru Tua (Tema Pemerintah)
+   ============================================================ */
+
+/* --- Import font formal dari Google Fonts --- */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap");
+
+/* ============================================================
+   VARIABEL WARNA — Palet resmi tema pemerintah biru
+   ============================================================ */
+:root {
+  --gov-navy: #0d2b52; /* Biru navy tua — nav, header, tombol */
+  --gov-blue: #1a4b8c; /* Biru tua — heading, aksen          */
+  --gov-blue-light: #2563a9; /* Biru sedang — hover, link          */
+  --gov-sky: #3b82c4; /* Biru langit — highlight            */
+  --gov-white: #ffffff; /* Putih bersih                       */
+  --gov-bg: #f4f7fb; /* Latar halaman (biru sangat pucat)  */
+  --gov-surface: #ffffff; /* Permukaan kartu/konten             */
+  --gov-border: #c7d8ec; /* Garis batas elemen                 */
+  --gov-text: #1c2d40; /* Teks utama — hitam kebiruan        */
+  --gov-text-muted: #5a7393; /* Teks sekunder — abu kebiruan       */
+  --gov-shadow: rgba(13, 43, 82, 0.12);
+
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-heading: "Merriweather", Georgia, serif;
+
+  /* Alias (agar form.css tetap berfungsi) */
+  --accent-primary: var(--gov-blue);
+  --accent-secondary: var(--gov-sky);
+  --primary-bg: var(--gov-bg);
+  --secondary-bg: var(--gov-navy);
+  --card-bg: var(--gov-surface);
+  --border-color: var(--gov-border);
+  --text-primary: var(--gov-text);
+  --text-secondary: var(--gov-text-muted);
+  --shadow-color: var(--gov-shadow);
 }
 
-body {
-  font-family: "Poppins", sans-serif;
+/* ============================================================
+   RESET DASAR
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #f4f8f9;
-  color: #333;
 }
 
-/* --- Header & Jumbotron --- */
+/* Latar belakang halaman & tipografi dasar */
+body {
+  font-family: var(--font-body);
+  background-color: var(--gov-bg);
+  color: var(--gov-text);
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* ============================================================
+   NAVIGASI — Sticky topbar berwarna navy
+   ============================================================ */
+nav {
+  background-color: var(--gov-navy);
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(13, 43, 82, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo / nama instansi */
+.logo,
+nav > a:first-child {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gov-white);
+  text-decoration: none;
+  padding: 16px 0;
+  letter-spacing: 0.4px;
+}
+
+/* Daftar menu navigasi */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0;
+}
+
+/* Tautan menu navigasi */
+nav a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 18px 14px;
+  display: block;
+  letter-spacing: 0.2px;
+  border-bottom: 3px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+/* Hover tautan navigasi */
+nav a:hover,
+nav a.active {
+  color: var(--gov-white);
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hapus pseudo elemen lama jika masih ada */
+nav a::after {
+  display: none;
+}
+
+/* ============================================================
+   JUMBOTRON / HEADER — Spanduk besar atas halaman
+   ============================================================ */
 header {
   display: block;
 }
 
 .jumbotron {
-  padding: 40px 20px;
-  background-color: #003366;
-  color: white;
+  background: linear-gradient(
+    135deg,
+    var(--gov-navy) 0%,
+    var(--gov-blue) 60%,
+    var(--gov-blue-light) 100%
+  );
+  padding: 70px 20px 50px;
   text-align: center;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  border-bottom: 4px solid var(--gov-blue-light);
+  position: relative;
+  overflow: hidden;
 }
 
-.jumbotron h1 {
-  font-size: 3em;
-  margin: 0;
-}
-
-.jumbotron p {
-  font-size: 1.2em;
-  margin-top: 10px;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
-
-/* --- Navbar cihuy --- */
-nav {
-  background-color: #003366;
-  padding: 5px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  margin: 0 15px;
-}
-
-nav a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  padding: 15px;
-  display: block;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ffd700;
-}
-/* --- My Istri ---*/
-.bg-char {
+/* Pola dekoratif tipis di latar jumbotron */
+.jumbotron::before {
+  content: "";
   position: absolute;
-  top: 70%;
-  transform: translateY(-50%);
-  z-index: -99;
-  opacity: 0.8;
-  max-width: 350px;
-  height: auto;
-}
-.bg-char-left {
-  left: 30px;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 60px,
+    rgba(255, 255, 255, 0.03) 60px,
+    rgba(255, 255, 255, 0.03) 61px
+  );
+  pointer-events: none;
 }
 
-.bg-char-right {
-  right: 30px;
+/* Judul utama jumbotron */
+.jumbotron h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gov-white);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  position: relative;
 }
-.bottom {
-  top: 200%;
+
+/* Garis dekoratif di bawah h1 */
+.jumbotron h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 12px auto 0;
+  border-radius: 2px;
 }
-/* --- Isinya --- */
+
+/* Teks sub-judul jumbotron */
+.jumbotron p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ============================================================
+   MAIN — Area konten utama
+   ============================================================ */
 main {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px;
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 #content {
   flex: 3;
 }
 
+/* Sidebar kanan */
 aside {
   flex: 1;
   position: sticky;
@@ -116,41 +217,75 @@ aside {
   height: fit-content;
 }
 
-.iwisata {
-  list-style: none;
-}
-/* --- Card --- */
+/* ============================================================
+   CARD — Kotak konten (artikel, profil, dll)
+   ============================================================ */
 .card {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: var(--gov-surface);
+  border: 1px solid var(--gov-border);
+  border-radius: 6px;
+  padding: 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px var(--gov-shadow);
+  transition:
+    box-shadow 0.25s,
+    transform 0.25s;
+  border-top: 3px solid var(--gov-blue);
 }
 
-h2,
+.card:hover {
+  box-shadow: 0 6px 24px rgba(13, 43, 82, 0.16);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   HEADING — h2 dan h3
+   ============================================================ */
+h2 {
+  font-family: var(--font-heading);
+  color: var(--gov-navy);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gov-border);
+}
+
 h3 {
-  color: #004c99;
-  margin-top: 0;
+  font-family: var(--font-heading);
+  color: var(--gov-blue);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
+/* Paragraf */
 p {
-  line-height: 1.6;
-  text-align: justify;
+  color: var(--gov-text);
+  font-size: 0.97rem;
+  margin-bottom: 14px;
 }
 
-/* --- gambare --- */
+/* ============================================================
+   GAMBAR — Foto konten dan profil kota
+   ============================================================ */
 .featured-image {
   width: 100%;
-  max-height: 400px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  border: 1px solid var(--gov-border);
   object-fit: cover;
-  border-radius: 5px;
+  display: block;
 }
 
 .profile-img {
-  width: 150px;
+  width: 130px;
   display: block;
-  margin: 0 auto;
+  margin: 10px auto 16px;
+  border-radius: 50%;
+  border: 3px solid var(--gov-blue);
+  box-shadow: 0 2px 12px var(--gov-shadow);
 }
 
 figure {
@@ -159,33 +294,234 @@ figure {
 }
 
 figcaption {
-  color: #666;
-  font-size: 0.9em;
+  color: var(--gov-text-muted);
+  font-size: 0.85em;
   margin-top: 5px;
 }
 
-/* --- Table --- */
+/* ============================================================
+   TABEL — Informasi data dalam aside
+   ============================================================ */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  font-size: 0.92rem;
 }
 
 table th,
 table td {
-  padding: 8px;
+  padding: 10px 12px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.9em;
+  border-bottom: 1px solid var(--gov-border);
 }
 
-/* --- Footer --- */
+table th {
+  color: var(--gov-navy);
+  font-weight: 700;
+  font-family: var(--font-body);
+  width: 45%;
+  background-color: #f0f5fb;
+}
+
+table td {
+  color: var(--gov-text);
+}
+
+table tr:last-child th,
+table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   FOOTER — Bagian paling bawah halaman
+   ============================================================ */
 footer {
-  display: flex;
-  padding: 10px;
-  color: white;
-  background-color: #003366;
+  background-color: var(--gov-navy);
+  color: #ffffff;
   text-align: center;
-  justify-content: center;
-  font-weight: bold;
+  padding: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-top: 3px solid var(--gov-blue-light);
+  margin-top: 60px;
+  letter-spacing: 0.2px;
+  opacity: 0.95;
+}
+
+footer p {
+  color: #ffffff !important;
+  margin: 0;
+}
+
+/* ============================================================
+   TOMBOL KEMBALI KE ATAS
+   ============================================================ */
+#backToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--gov-navy);
+  color: var(--gov-white);
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  transition:
+    background-color 0.25s,
+    box-shadow 0.25s;
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  line-height: 46px;
+  box-shadow: 0 3px 12px var(--gov-shadow);
+  letter-spacing: 0;
+}
+
+#backToTopBtn:hover {
+  background-color: var(--gov-blue);
+  box-shadow: 0 5px 18px rgba(13, 43, 82, 0.3);
+}
+
+/* ============================================================
+   HAMBURGER MENU — Mobile
+   ============================================================ */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 101;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--gov-white);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+}
+
+.hamburger::before {
+  top: -7px;
+}
+.hamburger::after {
+  top: 7px;
+}
+
+/* ============================================================
+   IMAGE GRID — Galeri foto (my_istri.html)
+   ============================================================ */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.image-grid img,
+.image-container img {
+  width: 100%;
+  height: auto; /* Ikuti tinggi asli gambar, tidak terpotong */
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--gov-border);
+  box-shadow: 0 2px 10px var(--gov-shadow);
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.image-grid img:hover,
+.image-container img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(13, 43, 82, 0.2);
+}
+
+/* ============================================================
+   SECTION WISATA
+   ============================================================ */
+.iwisata ul {
+  list-style: none;
+  padding: 0;
+}
+
+.iwisata section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gov-border);
+}
+
+.iwisata section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   RESPONSIVE — Penyesuaian untuk layar kecil (mobile)
+   ============================================================ */
+@media screen and (max-width: 768px) {
+  .jumbotron h1 {
+    font-size: 2rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    flex-wrap: wrap;
+    padding: 0 16px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  nav ul.nav-open {
+    max-height: 400px;
+    padding-bottom: 10px;
+  }
+
+  nav a {
+    padding: 12px 6px;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  nav a:hover {
+    border-left-color: rgba(255, 255, 255, 0.6);
+    border-bottom: none;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  aside {
+    position: static;
+  }
 }

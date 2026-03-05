@@ -1,39 +1,95 @@
 <!doctype html>
+<!-- ============================================================
+     perpindahan_penduduk.html
+     Halaman Formulir Pendaftaran Identitas / Perpindahan Warga
+     Sistem Kependudukan — Pemerintah Kota Bandung
+     ============================================================ -->
 <html lang="id">
+  <!-- ─── HEAD: meta, judul, dan tautan stylesheet ─────────── -->
   <head>
+    <!-- Deklarasi karakter UTF-8 agar huruf Indonesia terbaca -->
     <meta charset="UTF-8" />
+
+    <!-- Memastikan tampilan responsif di berbagai perangkat -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistem Identitas Warga</title>
+
+    <!-- Judul halaman yang tampil di tab browser -->
+    <title>Pendaftaran Identitas Warga — Pemerintah Kota Bandung</title>
+
+    <!-- Font formal dari Google Fonts (Source Sans 3 & Merriweather) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Stylesheet utama tema pemerintah biru formal -->
     <link rel="stylesheet" href="assets/styles/form.css" />
   </head>
+
+  <!-- ─── BODY: seluruh konten yang terlihat user ─────────── -->
   <body>
+    <!-- ═══════════════════════════════════════════════════════
+         NAV — Bilah navigasi atas situs
+         Berisi logo nama kota dan menu halaman
+         ═══════════════════════════════════════════════════════ -->
     <nav>
-      <a href="index.html" class="logo">Bandung</a>
+      <!-- Logo / nama instansi yang dapat diklik menuju beranda -->
+      <a href="index.html" class="logo">Kota Bandung</a>
+
+      <!-- Daftar tautan menu navigasi -->
       <ul>
+        <!-- Menu utama beranda -->
         <li><a href="index.html">Beranda</a></li>
+
+        <!-- Menu menuju bagian sejarah kota -->
         <li><a href="index.html#sejarah">Sejarah</a></li>
+
+        <!-- Menu menuju bagian geografis kota -->
         <li><a href="index.html#geografis">Geografis</a></li>
+
+        <!-- Menu menuju bagian wisata kota -->
         <li><a href="index.html#wisata">Wisata</a></li>
+
+        <!-- Menu halaman aktif: Perpindahan Warga -->
         <li><a href="perpindahan_penduduk.html">Perpindahan Warga</a></li>
+
+        <!-- Menu halaman kalkulator -->
+        <li><a href="kalkulator.html">Kalkulator</a></li>
       </ul>
     </nav>
+    <!-- ═══════════════════════════════════════════════════════ /NAV -->
 
+    <!-- ═══════════════════════════════════════════════════════
+         CONTAINER — Pembungkus konten halaman
+         Membatasi lebar konten agar tidak terlalu lebar
+         ═══════════════════════════════════════════════════════ -->
     <div class="container">
-      <form action="">
+      <!-- ═══════════════════════════════════════════════════
+           FORM — Formulir pendaftaran identitas warga
+           Menonaktifkan action karena diproses via JavaScript
+           ═══════════════════════════════════════════════════ -->
+      <form id="form-pendaftaran" action="" onsubmit="return false;">
+        <!-- FIELDSET: mengelompokkan semua field dalam satu kesatuan -->
         <fieldset>
+          <!-- LEGEND: judul utama formulir -->
           <legend>Pendaftaran Identitas Warga</legend>
 
+          <!-- ───────────────────────────────────────────────
+               BAGIAN ATAS: Data utama + Unggah Foto
+               Layout dua kolom: kiri (data) + kanan (foto)
+               ─────────────────────────────────────────────── -->
           <div
             class="main-form-wrapper"
             style="display: flex; gap: 30px; align-items: flex-start"
           >
+            <!-- Kolom kiri: NIK dan Nama -->
             <div style="flex: 2">
+              <!-- FIELD NIK: nomor identitas 16 digit -->
               <div class="form-group">
                 <label for="nik">Nomor Induk Kependudukan (NIK)</label>
+                <!-- Input angka, wajib diisi, maksimal 16 digit -->
                 <input
                   id="nik"
                   name="nik"
@@ -43,18 +99,25 @@
                 />
               </div>
 
+              <!-- BARIS NAMA: nama depan dan nama belakang berdampingan -->
               <div class="name-row">
+                <!-- FIELD Nama Depan -->
                 <div class="form-group">
                   <label for="nama-depan">Nama Depan</label>
+                  <!-- Input teks nama depan, wajib diisi -->
                   <input
                     id="nama-depan"
+                    name="nama-depan"
                     type="text"
                     placeholder="Nama Depan"
                     required
                   />
                 </div>
+
+                <!-- FIELD Nama Belakang -->
                 <div class="form-group">
                   <label for="nama-belakang">Nama Belakang</label>
+                  <!-- Input teks nama belakang, opsional -->
                   <input
                     id="nama-belakang"
                     name="nama-belakang"
@@ -63,26 +126,47 @@
                   />
                 </div>
               </div>
+              <!-- /BARIS NAMA -->
             </div>
+            <!-- /Kolom kiri -->
 
+            <!-- Kolom kanan: area unggah foto profil/KTP -->
             <div
               class="photo-upload-container"
               style="flex: 1; text-align: center"
             >
+              <!-- Label untuk area unggah foto -->
               <label>Foto Profil / KTP</label>
+
+              <!-- BOX FOTO: area klik untuk memilih file gambar -->
               <div class="photo-box">
-                <input type="file" id="foto" name="foto" />
-                <div>Pilih Foto</div>
+                <!-- Input file tersembunyi; diklik melalui photo-box -->
+                <input type="file" id="foto" name="foto" accept="image/*" />
+
+                <!-- Teks petunjuk di dalam box foto -->
+                <div id="foto-placeholder">📎 Klik untuk Pilih Foto</div>
+
+                <!-- Pratinjau gambar setelah dipilih, awalnya tersembunyi -->
                 <img
                   id="output-image"
-                  style="width: 100%; border-radius: 8px; display: none"
+                  style="width: 100%; border-radius: 4px; display: none"
+                  alt="Pratinjau foto"
                 />
               </div>
+              <!-- /BOX FOTO -->
             </div>
+            <!-- /Kolom kanan -->
           </div>
+          <!-- /BAGIAN ATAS -->
+
+          <!-- ───────────────────────────────────────────────
+               BARIS EMAIL & TELEPON berdampingan
+               ─────────────────────────────────────────────── -->
           <div class="name-row">
+            <!-- FIELD Email -->
             <div class="form-group">
               <label for="email">Email</label>
+              <!-- Input email dengan validasi format otomatis -->
               <input
                 id="email"
                 name="email"
@@ -90,105 +174,275 @@
                 placeholder="alamat@email.com"
               />
             </div>
+
+            <!-- FIELD Nomor Telepon -->
             <div class="form-group">
               <label for="telepon">No. Telepon</label>
+              <!-- Input nomor telepon, hanya angka -->
               <input
                 id="telepon"
                 name="telepon"
                 type="tel"
-                placeholder="0812xxxx"
+                placeholder="08xxxxxxxxxx"
               />
             </div>
           </div>
+          <!-- /BARIS EMAIL & TELEPON -->
 
+          <!-- ───────────────────────────────────────────────
+               FIELD ALAMAT SAAT INI
+               Textarea multi-baris untuk alamat lengkap
+               ─────────────────────────────────────────────── -->
           <div class="form-group">
             <label for="alamat">Alamat Saat Ini</label>
+            <!-- Textarea untuk alamat; rows=3 sebagai tinggi awal -->
             <textarea
               name="alamat"
               id="alamat"
               rows="3"
-              placeholder="Masukkan alamat lengkap..."
+              placeholder="Masukkan alamat lengkap (Jalan, RT/RW, Kelurahan, Kecamatan)..."
             ></textarea>
           </div>
 
+          <!-- ───────────────────────────────────────────────
+               BARIS TEMPAT & TANGGAL LAHIR berdampingan
+               ─────────────────────────────────────────────── -->
           <div class="name-row">
+            <!-- FIELD Tempat Lahir -->
             <div class="form-group">
               <label for="tempat-lahir">Tempat Lahir</label>
               <input
                 type="text"
                 id="tempat-lahir"
                 name="tempat-lahir"
-                placeholder="Kota lahir"
+                placeholder="Kota kelahiran"
               />
             </div>
+
+            <!-- FIELD Tanggal Lahir (date picker) -->
             <div class="form-group">
               <label for="tgl_lahir">Tanggal Lahir</label>
+              <!-- Input berupa kalender pilih tanggal -->
               <input type="date" id="tgl_lahir" name="tgl_lahir" />
             </div>
           </div>
+          <!-- /BARIS TEMPAT & TANGGAL LAHIR -->
 
+          <!-- ───────────────────────────────────────────────
+               BARIS AGAMA & STATUS PERNIKAHAN berdampingan
+               ─────────────────────────────────────────────── -->
           <div class="name-row">
+            <!-- FIELD Agama (dropdown) -->
             <div class="form-group">
               <label for="agama">Agama</label>
+              <!-- Select dropdown pilihan agama -->
               <select id="agama" name="agama">
                 <option value="" disabled selected>Pilih Agama</option>
                 <option value="islam">Islam</option>
                 <option value="kristen">Kristen</option>
                 <option value="katolik">Katolik</option>
                 <option value="hindu">Hindu</option>
-                <option value="budha">Budha</option>
+                <option value="budha">Buddha</option>
                 <option value="konghucu">Konghucu</option>
-                <option value="kejawen">Kejawen</option>
-                <option value="atheist">Atheist</option>
               </select>
             </div>
+
+            <!-- FIELD Status Pernikahan (dropdown) -->
             <div class="form-group">
               <label for="status_pernikahan">Status Pernikahan</label>
+              <!-- Select dropdown status pernikahan -->
               <select id="status_pernikahan" name="status_pernikahan">
                 <option value="" disabled selected>Pilih Status</option>
                 <option value="menikah">Menikah</option>
                 <option value="belum_menikah">Belum Menikah</option>
+                <option value="duda_janda">Duda / Janda</option>
               </select>
             </div>
           </div>
+          <!-- /BARIS AGAMA & STATUS PERNIKAHAN -->
 
+          <!-- ───────────────────────────────────────────────
+               JENIS KELAMIN — Pilihan Radio Button
+               ─────────────────────────────────────────────── -->
+          <!-- Sub-judul seksi jenis kelamin -->
           <p class="section-title">Jenis Kelamin</p>
+
+          <!-- Grup opsi radio button jenis kelamin -->
           <div class="form-group option-group">
+            <!-- Pilihan radio: Laki-Laki -->
             <label class="option-item">
-              <input id="lk" type="radio" name="jenis_kelamin" /> Laki-Laki
+              <input
+                id="lk"
+                type="radio"
+                name="jenis_kelamin"
+                value="Laki-Laki"
+              />
+              Laki-Laki
             </label>
+
+            <!-- Pilihan radio: Perempuan -->
             <label class="option-item">
-              <input id="pr" type="radio" name="jenis_kelamin" /> Perempuan
+              <input
+                id="pr"
+                type="radio"
+                name="jenis_kelamin"
+                value="Perempuan"
+              />
+              Perempuan
             </label>
           </div>
+          <!-- /JENIS KELAMIN -->
 
+          <!-- ───────────────────────────────────────────────
+               BAHASA ASING — Pilihan Checkbox (multi-pilih)
+               ─────────────────────────────────────────────── -->
+          <!-- Sub-judul seksi bahasa asing -->
           <p class="section-title">Bahasa Asing yang Dikuasai</p>
-          <div class="form-group option-group">
-            <label class="option-item">
-              <input id="inggris" type="checkbox" name="bahasa_asing" /> Inggris
-            </label>
-            <label class="option-item">
-              <input id="arab" type="checkbox" name="bahasa_asing" /> Arab
-            </label>
-            <label class="option-item">
-              <input id="jerman" type="checkbox" name="bahasa_asing" /> Jerman
-            </label>
-            <label class="option-item">
-              <input id="jepang" type="checkbox" name="bahasa_asing" /> Jepang
-            </label>
-            <label class="option-item">
-              <input id="hewan" type="checkbox" name="bahasa_asing" /> Hewan
-            </label>
-            <label class="option-item">
-              <input id="alien" type="checkbox" name="bahasa_asing" /> Alien
-            </label>
-          </div>
 
-          <div class="submit-container">
-            <input type="submit" name="submit" value="Kirim Data Identitas" />
+          <!-- Grup checkbox bahasa asing; user bisa memilih lebih dari satu -->
+          <div class="form-group option-group">
+            <!-- Checkbox: Bahasa Inggris -->
+            <label class="option-item">
+              <input
+                id="inggris"
+                type="checkbox"
+                name="bahasa_asing"
+                value="Inggris"
+              />
+              Inggris
+            </label>
+
+            <!-- Checkbox: Bahasa Arab -->
+            <label class="option-item">
+              <input
+                id="arab"
+                type="checkbox"
+                name="bahasa_asing"
+                value="Arab"
+              />
+              Arab
+            </label>
+
+            <!-- Checkbox: Bahasa Jerman -->
+            <label class="option-item">
+              <input
+                id="jerman"
+                type="checkbox"
+                name="bahasa_asing"
+                value="Jerman"
+              />
+              Jerman
+            </label>
+
+            <!-- Checkbox: Bahasa Jepang -->
+            <label class="option-item">
+              <input
+                id="jepang"
+                type="checkbox"
+                name="bahasa_asing"
+                value="Jepang"
+              />
+              Jepang
+            </label>
+
+            <!-- Checkbox: Bahasa Mandarin -->
+            <label class="option-item">
+              <input
+                id="mandarin"
+                type="checkbox"
+                name="bahasa_asing"
+                value="Mandarin"
+              />
+              Mandarin
+            </label>
+
+            <!-- Checkbox: Bahasa Prancis -->
+            <label class="option-item">
+              <input
+                id="prancis"
+                type="checkbox"
+                name="bahasa_asing"
+                value="Prancis"
+              />
+              Prancis
+            </label>
           </div>
+          <!-- /BAHASA ASING -->
+
+          <!-- ───────────────────────────────────────────────
+               SUBMIT CONTAINER — Tombol kirim formulir
+               Saat ditekan, memunculkan popup konfirmasi data
+               ─────────────────────────────────────────────── -->
+          <div class="submit-container">
+            <!-- Tombol submit; event onclick ditangani form.js -->
+            <input
+              type="submit"
+              id="btn-submit"
+              name="submit"
+              value="Verifikasi &amp; Kirim Data"
+            />
+          </div>
+          <!-- /SUBMIT CONTAINER -->
         </fieldset>
+        <!-- /FIELDSET -->
       </form>
+      <!-- /FORM -->
     </div>
+    <!-- /CONTAINER -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         MODAL KONFIRMASI DATA — Popup yang muncul sebelum submit
+         Menampilkan ringkasan data yang diisi user untuk dikonfirmasi
+         ═══════════════════════════════════════════════════════ -->
+    <div
+      class="modal-overlay"
+      id="modal-konfirmasi"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-judul"
+    >
+      <!-- Kotak isi popup -->
+      <div class="modal-box">
+        <!-- Judul popup konfirmasi -->
+        <h3 id="modal-judul">Konfirmasi Data Pendaftaran</h3>
+
+        <!-- Area ringkasan data: diisi oleh JavaScript sebelum ditampilkan -->
+        <div class="modal-data" id="modal-ringkasan">
+          <!-- Konten diisi secara dinamis oleh form.js -->
+        </div>
+
+        <!-- Pertanyaan konfirmasi kepada user -->
+        <p class="modal-question">Apakah data di atas sudah benar?</p>
+
+        <!-- Tombol aksi: Batal kembali ke form, Konfirmasi lanjut proses -->
+        <div class="modal-actions">
+          <!-- Tombol Batal: menutup popup tanpa submit -->
+          <button type="button" class="btn-cancel" id="btn-batal">
+            Batal / Koreksi
+          </button>
+
+          <!-- Tombol Konfirmasi: melanjutkan pengiriman data -->
+          <button type="button" class="btn-confirm" id="btn-konfirmasi">
+            ✔ Ya, Kirim Data
+          </button>
+        </div>
+      </div>
+      <!-- /Kotak popup -->
+    </div>
+    <!-- /MODAL KONFIRMASI -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         SCRIPT — File JavaScript untuk validasi, pratinjau foto,
+         dan logika popup konfirmasi data
+         ═══════════════════════════════════════════════════════ -->
+    <script src="assets/js/form.js"></script>
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER — Keterangan hak cipta di bawah halaman
+         ═══════════════════════════════════════════════════════ -->
+    <footer>
+      <p>
+        &copy; 2025 Pemerintah Kota Bandung &mdash; Layanan Informasi Digital
+      </p>
+    </footer>
   </body>
 </html>

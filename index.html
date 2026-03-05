@@ -1,60 +1,95 @@
 <!doctype html>
+<!-- ============================================================
+     index.html
+     Halaman Profil Kota Bandung — Halaman Utama / Beranda
+     Pemerintah Kota Bandung
+     ============================================================ -->
 <html lang="id">
+  <!-- ─── HEAD: meta, judul, font, stylesheet ─────────────── -->
   <head>
+    <!-- Deklarasi karakter UTF-8 -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halaman Profil Bandung</title>
 
+    <!-- Responsif di semua perangkat -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Judul halaman di tab browser -->
+    <title>Profil Kota Bandung — Pemerintah Kota Bandung</title>
+
+    <!-- Deskripsi singkat untuk mesin pencari -->
+    <meta
+      name="description"
+      content="Halaman resmi profil Kota Bandung: sejarah, geografis, dan wisata."
+    />
+
+    <!-- Font formal dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Stylesheet utama tema biru formal pemerintah -->
     <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/transitions.css" />
   </head>
 
+  <!-- ─── BODY: konten yang terlihat user ──────────────────── -->
   <body>
-    <img src="assets/image/zetaV1.png" alt="" class="bg-char bg-char-left" />
-    <img src="assets/image/zetaV3.png" alt="" class="bg-char bg-char-right" />
-    <img
-      src="assets/image/zetaV2.png"
-      alt=""
-      class="bg-char bg-char-left bottom"
-    />
-    <img
-      src="assets/image/zetaV4.png"
-      alt=""
-      class="bg-char bg-char-right bottom"
-    />
+    <!-- NAV: diletakkan di luar header agar sticky bekerja sepanjang halaman -->
+    <nav>
+      <button class="nav-toggle" aria-label="Buka/tutup menu">
+        <span class="hamburger"></span>
+      </button>
+      <a href="index.html" class="logo">Kota Bandung</a>
+      <ul id="mainNav">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="#sejarah">Sejarah</a></li>
+        <li><a href="#geografis">Geografis</a></li>
+        <li><a href="#wisata">Wisata</a></li>
+        <li><a href="perpindahan_penduduk.html">Perpindahan Warga</a></li>
+        <li><a href="kalkulator.html">Kalkulator</a></li>
+      </ul>
+    </nav>
+
     <header>
       <div class="jumbotron">
-        <h1>Bandung</h1>
+        <!-- Easter Egg: Nama kota mengarah ke halaman rahasia -->
+        <a
+          href="my_istri.html"
+          style="text-decoration: none; color: inherit; cursor: pointer"
+        >
+          <h1>Bandung</h1>
+        </a>
         <p>
           Kota metropolitan terbesar di Provinsi Jawa Barat, sekaligus menjadi
           ibu kota provinsi tersebut.
         </p>
       </div>
-
-      <nav>
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="#sejarah">Sejarah</a></li>
-          <li><a href="#geografis">Geografis</a></li>
-          <li><a href="#wisata">Wisata</a></li>
-          <li><a href="perpindahan_penduduk.html">Perpindahan Warga</a></li>
-        </ul>
-      </nav>
     </header>
 
+    <!-- ═══════════════════════════════════════════════════════
+         MAIN — Konten utama: artikel + sidebar
+         ═══════════════════════════════════════════════════════ -->
     <main>
+      <!-- Kolom kiri: berisi artikel-artikel informasi kota -->
       <div id="content">
+        <!-- ───────────────────────────────────────────────────
+             ARTIKEL SEJARAH
+             ─────────────────────────────────────────────────── -->
         <article id="sejarah" class="card">
+          <!-- Judul artikel -->
           <h2>Sejarah</h2>
+
+          <!-- Gambar ilustrasi sejarah kota -->
           <img
             src="assets/image/history.jpg"
-            alt="sejarah"
+            alt="Ilustrasi sejarah Kota Bandung"
             class="featured-image"
           />
+
+          <!-- Paragraf konten sejarah -->
           <p>
             Kata Bandung berasal dari kata bendung atau bendungan karena
             terbendungnya sungai Citarum oleh lava Gunung Tangkuban Parahu yang
@@ -78,16 +113,24 @@
           </p>
         </article>
 
+        <!-- ───────────────────────────────────────────────────
+             ARTIKEL GEOGRAFIS
+             ─────────────────────────────────────────────────── -->
         <article id="geografis" class="card">
+          <!-- Judul artikel -->
           <h2>Geografis</h2>
+
+          <!-- Gambar peta / kondisi geografis -->
           <img
             src="assets/image/geografis.jpg"
-            alt="geografis"
+            alt="Peta geografis Kota Bandung"
             class="featured-image"
           />
+
+          <!-- Paragraf konten geografis -->
           <p>
             Kota Bandung dikelilingi oleh pegunungan, sehingga bentuk morfologi
-            wilayahnya bagaikan sebuah mangkok raksasa,[9] secara geografis kota
+            wilayahnya bagaikan sebuah mangkok raksasa, secara geografis kota
             ini terletak di tengah-tengah provinsi Jawa Barat, serta berada pada
             ketinggian ±768 m di atas permukaan laut, dengan titik tertinggi di
             berada di sebelah utara dengan ketinggian 1.050 meter di atas
@@ -104,8 +147,14 @@
           </p>
         </article>
 
+        <!-- ───────────────────────────────────────────────────
+             ARTIKEL WISATA
+             ─────────────────────────────────────────────────── -->
         <article id="wisata" class="card">
+          <!-- Judul artikel -->
           <h2>Wisata</h2>
+
+          <!-- Pengantar wisata kota -->
           <p>
             Sejak dibukanya Jalan Tol Cipularang, kota Bandung telah menjadi
             tujuan utama dalam menikmati liburan akhir pekan terutama dari
@@ -114,13 +163,15 @@
             bangunan lama berarsitektur peninggalan Belanda.
           </p>
 
+          <!-- Daftar tempat wisata -->
           <div class="iwisata">
             <ul>
+              <!-- Tempat wisata: Farm House Lembang -->
               <section>
                 <h3>Farm House Lembang</h3>
                 <img
                   src="assets/image/farm-house.jpg"
-                  alt="farm house"
+                  alt="Farm House Lembang"
                   class="featured-image"
                 />
                 <p>
@@ -132,52 +183,59 @@
                 </p>
               </section>
 
+              <!-- Tempat wisata: Observatorium Bosscha -->
               <section>
                 <h3>Observatorium Bosscha</h3>
                 <img
                   src="assets/image/bosscha.jpg"
-                  alt="bosscha"
+                  alt="Observatorium Bosscha"
                   class="featured-image"
                 />
                 <p>
                   Memiliki beberapa teleskop, antara lain, Refraktor Ganda
                   Zeiss, Schmidt Bimasakti, Refraktor Bamberg, Cassegrain GOTO,
                   dan Teleskop Surya. Refraktor Ganda Zeiss adalah jenis
-                  teleskop terbesar untuk meneropong bintang. Benda ini
-                  diletakkan pada atap kubah sehingga saat teropong digunakan,
-                  atap tersebut harus dibuka. Observatorium Bosscha boleh
-                  dikunjungi oleh siapapun, tanpa tiket. Namun, bagi yang ingin
-                  menggunakan teleskop Zeiss, wajib mendaftarkan diri. Untuk
-                  instansi atau lembaga pendidikan, diberikan jadwal hari Selasa
-                  sampai Jumat. Sementara itu, kunjungan individu dibuka setiap
-                  hari Sabtu.
+                  teleskop terbesar untuk meneropong bintang. Observatorium
+                  Bosscha boleh dikunjungi oleh siapapun. Untuk instansi atau
+                  lembaga pendidikan, diberikan jadwal hari Selasa sampai Jumat.
+                  Sementara itu, kunjungan individu dibuka setiap hari Sabtu.
                 </p>
               </section>
             </ul>
           </div>
         </article>
       </div>
+      <!-- /Kolom kiri -->
 
+      <!-- ASIDE — Sidebar kanan: profil ringkas kota -->
       <aside>
         <article class="card profile">
           <header>
+            <!-- Nama kota di sidebar -->
             <h2>Kota Bandung</h2>
-            <p>Kota Kembang Paris van Java</p>
+            <p>Kota Kembang — Paris van Java</p>
+
+            <!-- Lambang / logo kota -->
             <figure>
-              <img src="assets/image/bandung-badge.png" class="profile-img" />
-              <figcaption>Lambang</figcaption>
+              <img
+                src="assets/image/bandung-badge.png"
+                class="profile-img"
+                alt="Lambang Kota Bandung"
+              />
+              <figcaption>Lambang Resmi</figcaption>
             </figure>
           </header>
 
+          <!-- Tabel informasi singkat kota -->
           <section>
-            <h3>Informasi Lainnya</h3>
+            <h3>Informasi</h3>
             <table>
               <tr>
                 <th>Negara</th>
                 <td>Indonesia</td>
               </tr>
               <tr>
-                <th>Hari jadi</th>
+                <th>Hari Jadi</th>
                 <td>25 Sep 1810</td>
               </tr>
               <tr>
@@ -197,9 +255,21 @@
         </article>
       </aside>
     </main>
+    <!-- ═══════════════════════════════════════════════════════ /MAIN -->
 
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER — Keterangan hak cipta di bawah halaman
+         ═══════════════════════════════════════════════════════ -->
     <footer>
-      <p>Belajar Dasar Pemrograman Web &#169; 2019, Dicoding Academy</p>
+      <p>
+        &copy; 2025 Pemerintah Kota Bandung &mdash; Layanan Informasi Digital
+      </p>
     </footer>
+
+    <!-- Tombol kembali ke atas halaman -->
+    <button id="backToTopBtn" title="Kembali ke atas">▲</button>
+
+    <!-- Script JS untuk hamburger menu & scroll to top -->
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

@@ -1,140 +1,216 @@
+/* ============================================================
+   FORM.CSS — Tema Formal Instansi Pemerintah
+   Warna dominan: Biru Navy dan Biru Tua
+   Digunakan pada halaman: perpindahan_penduduk.html
+   ============================================================ */
+
+/* --- Import font formal dari Google Fonts --- */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap");
+
+/* --- Variabel Warna Tema Pemerintah --- */
+:root {
+  --gov-navy: #0d2b52; /* Biru navy tua — warna utama pemerintah */
+  --gov-blue: #1a4b8c; /* Biru tua — aksen utama                */
+  --gov-blue-light: #2563a9; /* Biru sedang — hover / aksen kedua     */
+  --gov-sky: #3b82c4; /* Biru langit — highlight input          */
+  --gov-white: #ffffff; /* Putih bersih                          */
+  --gov-bg: #f4f7fb; /* Latar belakang halaman (biru sangat pucat) */
+  --gov-surface: #ffffff; /* Permukaan kartu/form                  */
+  --gov-border: #c7d8ec; /* Warna garis border                    */
+  --gov-text: #1c2d40; /* Teks utama — hitam kebiruan           */
+  --gov-text-muted: #5a7393; /* Teks sekunder — abu kebiruan          */
+  --gov-error: #c0392b; /* Warna error / validasi gagal          */
+  --gov-success: #1e6b4a; /* Warna sukses                          */
+  --gov-shadow: rgba(13, 43, 82, 0.12); /* Bayangan halaman         */
+
+  --font-formal: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-heading: "Merriweather", Georgia, serif;
+}
+
+/* --- Reset seluruh halaman & dasar body --- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Latar belakang halaman dengan warna biru sangat pucat, formal */
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
-  line-height: 1.9;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+  font-family: var(--font-formal);
+  background-color: var(--gov-bg);
+  color: var(--gov-text);
+  line-height: 1.7;
+  font-size: 16px;
 }
 
-/* --- Navbar Cihuy --- */
+/* ============================================================
+   NAVIGASI — Bilah navigasi atas situs
+   ============================================================ */
 nav {
-  background-color: #003366;
-  padding: 5px 5%;
   position: sticky;
   top: 0;
-  z-index: 100;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--gov-navy);
+  padding: 0 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
+/* Logo / Nama Instansi */
 nav .logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
   font-weight: 700;
-  font-size: 1.25rem;
-  color: white;
+  color: var(--gov-white);
   text-decoration: none;
+  padding: 16px 0;
+  letter-spacing: 0.5px;
 }
 
+/* Daftar menu navigasi */
 nav ul {
   display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style: none;
+  gap: 5px;
 }
 
-nav li {
-  margin-left: 20px;
-}
-
+/* Tautan navigasi */
 nav a {
+  font-family: var(--font-formal);
+  font-weight: 600;
+  font-size: 0.92rem;
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  padding: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 18px 14px;
   display: block;
-  transition: color 0.3s;
+  letter-spacing: 0.3px;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+  border-bottom: 3px solid transparent;
 }
 
+/* Efek hover pada tautan nav */
 nav a:hover {
-  color: #ffd700;
-}
-/* --- foto --- */
-
-.photo-box {
-  border: 2px dashed #e2e8f0;
-  border-radius: 12px;
-  padding: 20px;
-  position: relative;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f8fafc;
-  transition: all 0.3s;
-  cursor: pointer;
+  color: var(--gov-white);
+  border-bottom-color: rgba(255, 255, 255, 0.6);
 }
 
-.photo-box:hover {
-  border-color: #003366;
-  background-color: #f1f5f9;
+/* ============================================================
+   HEADER HALAMAN — Judul di atas form
+   ============================================================ */
+.page-header {
+  background: linear-gradient(135deg, var(--gov-navy) 0%, var(--gov-blue) 100%);
+  padding: 40px 20px 30px;
+  text-align: center;
+  border-bottom: 4px solid var(--gov-blue-light);
 }
 
-.photo-box input[type="file"] {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
+/* Judul utama halaman */
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--gov-white);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
 }
 
-/* --- Container alias form --- */
+/* Subjudul / keterangan halaman */
+.page-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   CONTAINER — Pembungkus konten utama
+   ============================================================ */
 .container {
   max-width: 900px;
   margin: 40px auto;
-  padding: 0 20px;
+  padding: 0 20px 60px;
 }
 
+/* ============================================================
+   FORM — Kotak formulir utama
+   ============================================================ */
 form {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.05),
-    0 10px 10px -5px rgba(0, 0, 0, 0.02);
-  border-top: 6px solid #003366;
+  background: var(--gov-surface);
+  border-radius: 6px;
+  border: 1px solid var(--gov-border);
+  box-shadow: 0 2px 16px var(--gov-shadow);
+  padding: 40px 45px;
 }
 
+/* Menghapus border bawaan pada fieldset */
 fieldset {
   border: none;
+  padding: 0;
 }
 
+/* ============================================================
+   LEGEND — Judul utama dalam form
+   ============================================================ */
 legend {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 25px;
-  color: #1e293b;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gov-navy);
+  text-align: center;
+  width: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+  border-bottom: 2px solid var(--gov-border);
+  position: relative;
 }
 
-/* --- Style di inputny ey --- */
+/* Garis biru dekoratif di bawah legend */
+legend::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--gov-blue);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   FORM GROUP — Kelompok satu field (label + input)
+   ============================================================ */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
+/* Baris dua kolom (nama / email, dll) */
 .name-row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
-.name-row div {
+/* Setiap form-group dalam name-row mengambil lebar sama */
+.name-row .form-group {
   flex: 1;
 }
 
+/* ============================================================
+   LABEL — Teks keterangan di atas input
+   ============================================================ */
 label {
   display: block;
-  font-weight: 500;
-  margin-bottom: 8px;
+  font-family: var(--font-formal);
+  font-weight: 600;
   font-size: 0.9rem;
+  color: var(--gov-text);
+  margin-bottom: 7px;
+  letter-spacing: 0.2px;
 }
 
+/* ============================================================
+   INPUT, SELECT, TEXTAREA — Semua elemen masukan data
+   ============================================================ */
 input[type="text"],
 input[type="number"],
 input[type="date"],
@@ -144,23 +220,100 @@ select,
 textarea {
   width: 100%;
   padding: 10px 14px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-family: inherit;
-  background-color: white;
-  transition: all 0.3s;
+  border: 1.5px solid var(--gov-border);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: var(--font-formal);
+  background-color: var(--gov-white);
+  color: var(--gov-text);
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+  appearance: auto;
 }
 
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: var(--gov-text-muted);
+  font-size: 0.9rem;
+}
+
+/* Efek fokus — garis biru muncul saat diklik */
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #003366;
-  box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+  border-color: var(--gov-blue);
+  box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.15);
 }
 
-/* --- RADIO & CHECKBOX --- */
+/* Textarea khusus */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ============================================================
+   FOTO UPLOAD — Area unggah foto profil/KTP
+   ============================================================ */
+.photo-box {
+  border: 2px dashed var(--gov-border);
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafd;
+  color: var(--gov-text-muted);
+  transition:
+    border-color 0.25s,
+    color 0.25s;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Efek hover area upload foto */
+.photo-box:hover {
+  border-color: var(--gov-blue);
+  color: var(--gov-blue);
+  background-color: #eef3fb;
+}
+
+/* Input file tersembunyi di dalam area foto */
+.photo-box input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+
+/* ============================================================
+   SECTION TITLE — Judul sub-bagian (Jenis Kelamin, dll)
+   ============================================================ */
+.section-title {
+  margin-top: 20px;
+  font-family: var(--font-formal);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--gov-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid var(--gov-border);
+  padding-bottom: 7px;
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   OPTION GROUP — Grup pilihan radio / checkbox
+   ============================================================ */
 .option-group {
   display: flex;
   flex-direction: column;
@@ -168,54 +321,281 @@ select:focus {
   margin-top: 5px;
 }
 
+/* Satu item pilihan (label + radio/checkbox) */
 .option-item {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  color: var(--gov-text);
+  font-size: 0.95rem;
 }
 
-.option-item input {
+/* Tampilan custom radio dan checkbox */
+.option-item input[type="radio"],
+.option-item input[type="checkbox"] {
+  appearance: none;
   width: 18px;
   height: 18px;
+  border: 2px solid var(--gov-blue-light);
+  border-radius: 50%;
   cursor: pointer;
+  position: relative;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+  flex-shrink: 0;
+  background-color: var(--gov-white);
 }
 
-.section-title {
-  margin-top: 25px;
-  font-weight: 600;
-  color: #1e293b;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
+/* Checkbox: sudut membulat kotak */
+.option-item input[type="checkbox"] {
+  border-radius: 3px;
 }
 
-/* --- Tombole --- */
-.submit-container {
-  margin-top: 30px;
+/* Warna saat dipilih */
+.option-item input[type="radio"]:checked,
+.option-item input[type="checkbox"]:checked {
+  background-color: var(--gov-blue);
+  border-color: var(--gov-blue);
 }
 
-input[type="submit"] {
-  width: 100%;
-  background-color: #003366;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.3rem;
+/* Tanda centang di dalam checkbox/radio yang dipilih */
+.option-item input[type="radio"]:checked::after,
+.option-item input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: var(--gov-white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
   font-weight: bold;
+}
+
+/* ============================================================
+   SUBMIT BUTTON — Tombol kirim formulir
+   ============================================================ */
+.submit-container {
+  margin-top: 35px;
+  border-top: 1px solid var(--gov-border);
+  padding-top: 28px;
+}
+
+/* Tombol submit dengan warna biru navy formal */
+input[type="submit"],
+button[type="submit"] {
+  width: 100%;
+  background-color: var(--gov-navy);
+  color: var(--gov-white);
+  padding: 13px 20px;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-formal);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition:
+    background-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.15s;
+}
+
+/* Efek hover tombol — sedikit lebih terang, bayangan halus */
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background-color: var(--gov-blue);
+  box-shadow: 0 4px 12px rgba(13, 43, 82, 0.3);
+}
+
+/* Efek klik tombol */
+input[type="submit"]:active,
+button[type="submit"]:active {
+  transform: scale(0.98);
+  background-color: var(--gov-blue-light);
+}
+
+/* ============================================================
+   VALIDASI — Tampilan error saat field tidak valid
+   ============================================================ */
+/* Border merah pada field yang tidak valid */
+.invalid-field {
+  border-color: var(--gov-error) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12) !important;
+}
+
+/* Teks pesan error di bawah field */
+.error-message {
+  color: var(--gov-error);
+  font-size: 0.82rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   MODAL / POPUP KONFIRMASI — Overlay konfirmasi data
+   ============================================================ */
+/* Overlay gelap di belakang popup */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 25, 50, 0.65);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tampilkan overlay saat aktif */
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Kotak popup konfirmasi */
+.modal-box {
+  background: var(--gov-surface);
+  border-radius: 6px;
+  border-top: 5px solid var(--gov-blue);
+  padding: 36px 40px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 8px 30px rgba(13, 43, 82, 0.25);
+  animation: fadeInDown 0.25s ease;
+}
+
+/* Animasi masuk popup dari atas */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Judul popup */
+.modal-box h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--gov-navy);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gov-border);
+}
+
+/* Area konten detail data dalam popup */
+.modal-data {
+  background: #f4f7fb;
+  border: 1px solid var(--gov-border);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--gov-text);
+}
+
+/* Label field dalam popup */
+.modal-data strong {
+  color: var(--gov-navy);
+  font-weight: 700;
+  display: inline-block;
+  min-width: 130px;
+}
+
+/* Baris pertanyaan konfirmasi */
+.modal-question {
+  font-size: 0.95rem;
+  color: var(--gov-text);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+
+/* Grup tombol popup (OK & Batal) */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* Tombol Batal */
+.btn-cancel {
+  padding: 9px 22px;
+  border: 1.5px solid var(--gov-border);
+  border-radius: 4px;
+  background: var(--gov-white);
+  color: var(--gov-text);
+  font-family: var(--font-formal);
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition:
-    background 0.5s,
-    transform 0.1s;
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
-input[type="submit"]:hover {
-  background-color: #002244;
+.btn-cancel:hover {
+  background-color: #ecf0f6;
+  border-color: var(--gov-blue-light);
 }
 
-input[type="submit"]:active {
-  transform: scale(0.85);
+/* Tombol Konfirmasi / OK */
+.btn-confirm {
+  padding: 9px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--gov-navy);
+  color: var(--gov-white);
+  font-family: var(--font-formal);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
 }
-/* --- Masih menunggu kapan ada react😔 --- */
+
+.btn-confirm:hover {
+  background-color: var(--gov-blue);
+  box-shadow: 0 3px 10px rgba(13, 43, 82, 0.25);
+}
+
+/* ============================================================
+   RESPONSIVE — Penyesuaian untuk layar kecil (mobile)
+   ============================================================ */
+@media screen and (max-width: 768px) {
+  form {
+    padding: 28px 20px;
+  }
+
+  .name-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  legend {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================================
+   FOOTER — Keterangan hak cipta di bawah halaman
+   ============================================================ */
+footer {
+  background-color: var(--gov-navy);
+  color: #ffffff;
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-top: 3px solid var(--gov-blue-light);
+  margin-top: 50px;
+}
+
+footer p {
+  color: #ffffff !important;
+  margin: 0;
+}

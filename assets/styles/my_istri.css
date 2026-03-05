@@ -1,0 +1,102 @@
+/* --- My Istri Page - Super Cute Theme --- */
+
+.my-istri-page {
+  --cute-bg: #fff0f5; /* Lavender Blush */
+  --cute-text: #4b4b4b;
+  --cute-primary: #ff85a2; /* Pastel Pink */
+  --cute-secondary: #a29bfe; /* Soft Purple */
+  --cute-heading-font: 'Fredoka One', cursive;
+
+  background-color: var(--cute-bg);
+  color: var(--cute-text);
+}
+
+.my-istri-page .jumbotron {
+  background: linear-gradient(135deg, var(--cute-primary), var(--cute-secondary));
+}
+
+.my-istri-page .jumbotron h1 {
+  font-family: var(--cute-heading-font);
+  color: var(--cute-primary); /* Use cute primary color */
+  text-shadow: none; /* Override futuristic shadow */
+}
+
+.my-istri-page .jumbotron p {
+  color: var(--cute-text); /* Ensure good contrast for jumbotron paragraph */
+}
+
+.my-istri-page nav,
+.my-istri-page footer {
+  background-color: var(--cute-secondary);
+  border-color: var(--cute-primary);
+  color: var(--cute-text); /* Ensure text in nav/footer is readable */
+}
+
+.my-istri-page nav a {
+  color: #fff; /* White for nav links */
+}
+
+.my-istri-page nav a:hover {
+  color: var(--cute-text); /* Darker on hover */
+}
+
+.my-istri-page nav a::after {
+  background-color: var(--cute-primary);
+}
+
+
+.my-istri-page .card {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-color: var(--cute-primary);
+  box-shadow: 0 4px 20px rgba(162, 155, 254, 0.3);
+}
+
+.my-istri-page h2, .my-istri-page h3 {
+    font-family: var(--cute-heading-font);
+    color: var(--cute-text); /* Darker for better definition */
+}
+
+.my-istri-page .image-grid {
+  gap: 30px;
+}
+
+.my-istri-page .image-grid .image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.my-istri-page .image-grid .image-container:hover {
+    transform: translateY(-5px) rotate(3deg);
+    box-shadow: 0 10px 25px rgba(255, 133, 162, 0.4);
+}
+
+.my-istri-page .image-grid img {
+  border: none;
+  box-shadow: none;
+  display: block;
+}
+
+.my-istri-page .image-grid .image-container::after {
+    content: '♥';
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px var(--cute-primary);
+}
+
+.my-istri-page .image-grid .image-container:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.my-istri-page .image-grid .image-container:hover img {
+    filter: brightness(0.8) blur(1px);
+}
