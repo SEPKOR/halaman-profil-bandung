@@ -4,11 +4,11 @@
    Warna dominan: Biru Navy & Biru Tua (Tema Pemerintah)
    ============================================================ */
 
-/* --- Import font formal dari Google Fonts --- */
+/* --- Import dari Google Fonts --- */
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap");
 
 /* ============================================================
-   VARIABEL WARNA — Palet resmi tema pemerintah biru
+   VARIABEL WARNA
    ============================================================ */
 :root {
   --gov-navy: #0d2b52; /* Biru navy tua — nav, header, tombol */
@@ -59,7 +59,7 @@ body {
 }
 
 /* ============================================================
-   NAVIGASI — Sticky topbar berwarna navy
+   NAVIGASI
    ============================================================ */
 nav {
   background-color: var(--gov-navy);
@@ -127,7 +127,7 @@ nav a::after {
 }
 
 /* ============================================================
-   JUMBOTRON / HEADER — Spanduk besar atas halaman
+   JUMBOTRON / HEADER
    ============================================================ */
 header {
   display: block;

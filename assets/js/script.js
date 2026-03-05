@@ -1,6 +1,5 @@
 /**
  * script.js
- * Mengatur menu hamburger, tombol kembali ke atas, dan efek perpindahan halaman.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
